@@ -26,7 +26,6 @@ int main(){
         n = i;
     }
   
-    cout << std::setprecision(16);
     cout << "The geometric mean is: " << n << endl;
 
     return 0;
