@@ -5,7 +5,6 @@ int main(){
     using std::cout;
     using std::endl;
     using std::cin;
-    using std::string;
     
     int deciNum(0);
 
