@@ -22,8 +22,8 @@ int main(){
             cout << '*';
         }
         cout << endl;
-        star+=2;
-        space-=1;
+        star += 2;
+        space -= 1;
     }
 
     
@@ -39,7 +39,7 @@ int main(){
         }
         cout << endl;
         otherStar += 2;
-        otherSpace +=1;
+        otherSpace += 1;
     }
 
 
