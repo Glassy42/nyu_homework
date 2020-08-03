@@ -10,6 +10,39 @@ int main(){
     cout << "Please enter a positive integer: ";
     cin >> num;
 
+    const int odd(2*num-1);
+    int star(1);
+    int space(odd);
+
+    for (int lineCount(1); lineCount<=num; lineCount++) {
+        for (int spaceCount(odd); spaceCount>space; spaceCount-=1) {
+            cout << ' ';
+        }
+        for (int starCount(odd); starCount>=star; starCount-=1) {
+            cout << '*';
+        }
+        cout << endl;
+        star+=2;
+        space-=1;
+    }
+
+    
+    int otherStar(1);
+    int otherSpace((odd/2)+1);
+
+    for (int lineCount(1); lineCount<=num; lineCount++){
+        for (int spaceCount(odd); spaceCount>otherSpace; spaceCount-=1) {
+            cout << ' ';
+        }
+        for (int starCount(1); starCount<=otherStar; starCount++) {
+            cout << '*';
+        }
+        cout << endl;
+        otherStar += 2;
+        otherSpace +=1;
+    }
+
+
 
     return 0;
 }
