@@ -11,19 +11,19 @@ int main(){
     cin >> num;
 
     const int odd(2*num-1);
-    int star(1);
-    int space(odd);
+    int star(odd);
+    int space(0);
 
     for (int lineCount(1); lineCount<=num; lineCount++) {
-        for (int spaceCount(odd); spaceCount>space; spaceCount-=1) {
+        for (int spaceCount(0); spaceCount<space; spaceCount+=1) {
             cout << ' ';
         }
-        for (int starCount(odd); starCount>=star; starCount-=1) {
+        for (int starCount(0); starCount<star; starCount+=1) {
             cout << '*';
         }
         cout << endl;
-        star += 2;
-        space -= 1;
+        star -= 2;
+        space += 1;
     }
 
     
@@ -31,15 +31,15 @@ int main(){
     int otherSpace((odd/2)+1);
 
     for (int lineCount(1); lineCount<=num; lineCount++){
-        for (int spaceCount(odd); spaceCount>otherSpace; spaceCount-=1) {
+        for (int spaceCount(1); spaceCount<otherSpace; spaceCount+=1) {
             cout << ' ';
         }
-        for (int starCount(1); starCount<=otherStar; starCount++) {
+        for (int starCount(1); starCount<=otherStar; starCount+=1) {
             cout << '*';
         }
         cout << endl;
         otherStar += 2;
-        otherSpace += 1;
+        otherSpace -= 1;
     }
 
 
