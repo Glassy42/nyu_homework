@@ -9,20 +9,12 @@ int main(){
 
     cout << "Please enter a positive integer: ";
     cin >> userInput;
-
-    int rowNum(1);
     
-    for(int lineCount(1); lineCount<=userInput; lineCount++){
-
-        int multiple(rowNum);
-
-        while (multiple<=rowNum*userInput) {
-            cout << multiple << "\t";
-            multiple += rowNum;
+    for(int rowNum(1); rowNum <= userInput; ++rowNum) {
+        for(int colNum(1); colNum<=userInput; colNum++){
+            cout << rowNum * colNum << "\t";
         }
-
         cout << endl;
-        rowNum = rowNum+1;
     }
 
     return 0;

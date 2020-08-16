@@ -33,7 +33,7 @@ int main(){
                 guessNumCount -= 1;
 
                 cout << "Range: [" << rangeMin << "," << rangeMax << "]";
-                cout << "Number of guesses left: " << guessNumCount << endl;
+                cout << ", Number of guesses left: " << guessNumCount << endl;
                 cout << "Your guess: ";
                 cin >> userGuess;
                 
@@ -43,8 +43,8 @@ int main(){
                 rangeMax = userGuess-1;
                 guessNumCount -=1;
 
-                cout << "Range: [" << rangeMin << "," << rangeMax << "]" <<endl;
-                cout << "Number of guesses left: " << guessNumCount << endl;
+                cout << "Range: [" << rangeMin << "," << rangeMax << "]";
+                cout << ", Number of guesses left: " << guessNumCount << endl;
                 cout << "Your guess: ";
                 cin >> userGuess;
                 
