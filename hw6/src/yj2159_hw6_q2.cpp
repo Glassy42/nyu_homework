@@ -9,19 +9,6 @@ void printPineTree(int n, char symbol);
 int main(){
     using std::cin;
 
-    int n;
-    int m;
-    char symbol;
-
-    cout << "How many lines: ";
-    cin >> n;
-    cout << "How many space: ";
-    cin >> m;
-    cout << "What kind of symbol: ";
-    cin >> symbol;
-
-    printShiftedTriangle(n, m, symbol);
-
     int otherN;
     char otherSymbol;
 
