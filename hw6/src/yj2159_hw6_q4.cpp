@@ -21,9 +21,9 @@ int main() {
 }
 
 void printDivisor(int num) {
-    const int fixNum(sqrt(num));
-    
-    for (int numCheck(1); numCheck<fixNum; ++numCheck) {
+    const int squareRoot(sqrt(num));
+
+    for (int numCheck(1); numCheck<squareRoot; ++numCheck) {
         if (num%numCheck == 0) {
             cout << numCheck << " ";
         }
