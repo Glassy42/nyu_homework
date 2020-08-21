@@ -9,15 +9,15 @@ void printPineTree(int n, char symbol);
 int main(){
     using std::cin;
 
-    int otherN;
-    char otherSymbol;
+    int num;
+    char symbol;
 
     cout << "How many sequence of triangles: ";
-    cin >> otherN;
+    cin >> num;
     cout << "What kind of symbol: ";
-    cin >> otherSymbol;
+    cin >> symbol;
 
-    printPineTree(otherN, otherSymbol);
+    printPineTree(num, symbol);
     
     return 0;
 }
