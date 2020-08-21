@@ -16,14 +16,12 @@ int main() {
 }
 
 double eApprox(int n) {
-    const int firstNum(1);
+    const double firstNum(1);
     const double secondNum(1);
 
     double e(0);
 
     if (n == 1) {
-        return firstNum;
-    } else if (n == 2) {
         return firstNum+secondNum;
     } else {
         double divNum(0);
