@@ -25,7 +25,7 @@ double eApprox(int n) {
         return firstNum+secondNum;
     } else {
         double divNum(0);
-        int fact(1);
+        double fact(1);
         for (int count(1); count<=n; count++){
             fact *= count;
             divNum = 1.0/fact;
