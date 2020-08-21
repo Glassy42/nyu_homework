@@ -29,7 +29,7 @@ void printDivisor(int num) {
         }
     }
 
-    for (int numCheck(sqrt(num)); numCheck>=1; --numCheck) {
+    for (int numCheck(squareRoot); numCheck>=1; --numCheck) {
         if (num%numCheck == 0) {
             cout << num/numCheck << " ";
         }
