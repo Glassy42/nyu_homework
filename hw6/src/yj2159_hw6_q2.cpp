@@ -12,7 +12,7 @@ int main(){
     int num;
     char symbol;
 
-    cout << "How many sequence of triangles: ";
+    cout << "How many triangles: ";
     cin >> num;
     cout << "What kind of symbol: ";
     cin >> symbol;
