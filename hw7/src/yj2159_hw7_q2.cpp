@@ -7,14 +7,27 @@ bool isPerfect(int num);
 int main() {
     using std::cout;
     using std::endl;
+    using std::cin;
 
-    int outCountDivs(0), outSumDivs(0);
-    analyzeDividors(12, outCountDivs, outSumDivs);
+    int M(0);
 
-    cout << "outCountDivs: " << outCountDivs << " outSumDivs: " << outSumDivs << endl;
+    cout << "Please enter the integer 2>=";
+    cin >> M;
 
-    bool value = isPerfect(6);
-    cout << value << endl;
+    for (int i(2); i<=M; i++) {
+        if (isPerfect(i)) {
+            cout << i << endl;
+        }
+    }
+
+    for (int i(2); i<=M; i++) {
+        bool perfectNum(0);
+        int outCountDivs(0), outSumDivs(0);
+        analyzeDividors(i, outCountDivs, outSumDivs);
+
+        
+    }
+    
 
     return 0;
 }
