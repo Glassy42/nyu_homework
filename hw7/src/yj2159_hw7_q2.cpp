@@ -21,9 +21,16 @@ int main() {
     }
 
     for (int i(2); i<=M; i++) {
-        int outCountDivs(0), outSumDivs(0);
+        int outCountDivs(0), outSumDivs(0), otherOutSumDivs(0);
         analyzeDividors(i, outCountDivs, outSumDivs);
-        
+
+        if ((i != outSumDivs)&&(outSumDivs>i)) {
+            int otherOutSumDivs(0);
+            analyzeDividors(outSumDivs, outCountDivs, otherOutSumDivs);
+            if (i == otherOutSumDivs) {
+                cout << i << " and " << outSumDivs << endl;
+            }
+        }
     }
     
 
@@ -57,16 +64,8 @@ void analyzeDividors(int num, int& outCountDivs, int& outSumDivs) {
 }
 
 bool isPerfect(int num) {
-    bool perfectNum;
-    
     int outCountDivs(0), outSumDivs(0);
     analyzeDividors(num, outCountDivs, outSumDivs);
 
-    if (num ==outSumDivs) {
-        perfectNum = true;
-    } else {
-        perfectNum = false;
-    }
-
-    return perfectNum;
+    return num == outSumDivs;
 }
