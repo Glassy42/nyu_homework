@@ -21,10 +21,8 @@ int main() {
     }
 
     for (int i(2); i<=M; i++) {
-        bool perfectNum(0);
         int outCountDivs(0), outSumDivs(0);
         analyzeDividors(i, outCountDivs, outSumDivs);
-
         
     }
     
