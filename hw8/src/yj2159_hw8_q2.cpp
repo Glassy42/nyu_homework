@@ -4,6 +4,7 @@
 using std::string;
 
 bool isPalindrome(string str);
+bool bausiIsPalindrome(string str);
 
 int main() {
     using std::cout;
@@ -33,18 +34,18 @@ bool isPalindrome(string str) {
     int num(strNum);
 
     if (num%2 == 0) { //when the length of the string is even
-        for (int i(0); i<num/2; i++) { 
+        for (int i(0); i<strNum/2; i++) { 
             if (str[i] == str[num-1]) {
-            num--;
+                num--;
             }
         }
-    } else { //when the length of ths string is odd
-        for (int i(0); i<=num/2; i++) {
+    } else { //when the length of the string is odd
+        for (int i(0); i<=strNum/2; i++) {
             if (str[i] == str[num-1]) {
-            num--;
+                num--;
             }
         }
-    } 
+    }
 
     if (num == strNum/2) {
         return true;
