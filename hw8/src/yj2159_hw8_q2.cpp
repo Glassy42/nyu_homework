@@ -4,7 +4,6 @@
 using std::string;
 
 bool isPalindrome(string str);
-bool bausiIsPalindrome(string str);
 
 int main() {
     using std::cout;
