@@ -31,7 +31,7 @@ void findDigit(string str) {
                 str[i] = 'x';
             }
         } else {
-            if ((isdigit(str[0])) && (str[1] == ' ')) {
+            if ((isdigit(str[0])) && ((str[1] == ' ')||isdigit(str[1]))) {
                 str[0] = 'x';
             }
         }
