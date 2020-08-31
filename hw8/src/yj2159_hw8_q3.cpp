@@ -2,7 +2,9 @@
 
 void reverseArray(int arr[], int arrSize);
 void removeOdd(int arr[], int& arrSize);
+void splitParity(int arr[], int arrSize);
 void printArray(int arr[], int arrSize);
+
 int main() {
     using std::cout;
     using std::endl;
@@ -82,4 +84,27 @@ void removeOdd(int arr[], int& arrSize) {
 
 void splitParity(int arr[], int arrSize) {
 
+    int oddIndex(0);
+    int evenIndex(0);
+    int num(0);
+    
+
+    while (oddIndex < arrSize && evenIndex < arrSize) {
+
+        while ((arr[evenIndex]%2 != 0) && (evenIndex < arrSize)) {
+            evenIndex++;
+        }
+
+        while (((arr[oddIndex]%2 == 0) || (oddIndex < evenIndex)) && (oddIndex < arrSize)) {
+            oddIndex++;
+        }
+
+    
+        if (evenIndex < arrSize && oddIndex < arrSize) {
+            num = arr[evenIndex];
+            arr[evenIndex] = arr[oddIndex];
+            arr[oddIndex] = num;
+        }
+
+    }
 }
