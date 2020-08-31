@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cctype>
 
 using std::string;
 
@@ -31,6 +32,10 @@ bool isPalindrome(string str) {
 
     int strNum = str.length();
     int num(strNum);
+
+    for (int i(0); i<strNum; i++) {
+        str[i] = tolower(str[i]);
+    }
 
     if (num%2 == 0) { //when the length of the string is even
         for (int i(0); i<strNum/2; i++) { 
