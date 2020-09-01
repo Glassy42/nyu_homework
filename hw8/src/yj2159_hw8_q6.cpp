@@ -23,20 +23,32 @@ int main() {
 void findDigit(string str) {
 
     int length(str.length());
+    
+    string word;
+    string split;
 
-    for (int i(0); i < length; i++) {
-        
-        if (i > 0){
-            if ((isdigit(str[i])) && ((str[i-1] == ' ')||(str[i-1] == 'x'))) {
-                str[i] = 'x';
+    for (int i(0); i <= length; ++i){
+        if ((str[i] == ' ') || (i == length)) {
+            split = word;
+            int splitLength(split.length());
+            int count(0);
+            for (int j(0); j < splitLength; ++j) {
+                if (isdigit(split[j])){
+                    count++;
+                }
             }
+            if (count == splitLength) {
+                for (int k(0); k < splitLength; ++k) {
+                    split[k] = 'x';
+                }
+            }
+            count = 0;
+            std::cout << split << " ";
+            word = "";
         } else {
-            if ((isdigit(str[0])) && ((str[1] == ' ')||isdigit(str[1]))) {
-                str[0] = 'x';
-            }
+            word = word + str[i];
         }
-        
     }
 
-    std::cout << str << std::endl;
+    std::cout << std::endl;
 }
