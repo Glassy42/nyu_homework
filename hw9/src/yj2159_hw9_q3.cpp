@@ -3,7 +3,7 @@
 int* getPosNums1 (int* arr, int arrSize, int& outPosArrSize);
 int* getPosNums2 (int* arr, int arrSize, int* outPosArrSizePtr);
 void getPosNums3 (int* arr, int arrSize, int*& outPosArr, int& outPosArrSize);
-// void getPosNums4 (int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizePtr);
+void getPosNums4 (int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizePtr);
 
 int main(){
     using std::cout;
@@ -47,6 +47,37 @@ int main(){
 
     delete[] returnArray2;
 //c)---------------------------------------------------------------------
+
+    int outPosArrSize3(0);
+    int* outPosArr; 
+    getPosNums3(arr, arrSize, outPosArr, outPosArrSize3); 
+
+    std::cout << "[";
+    for(int i(0); i < outPosArrSize; ++i) {
+        std::cout << outPosArr[i];
+        if (i != outPosArrSize-1) {
+            std::cout << ",";
+        }
+    }
+    std::cout << "]" << std::endl;
+
+//d)---------------------------------------------------------------------
+
+    int outPosArrSize4(0);
+    int* outPosArrSizePtr2 = &outPosArrSize4;
+    int* outPos = new int[*outPosArrSizePtr2];
+    int** outPosArrPtr2 = &outPos;
+
+    getPosNums4(arr, arrSize, outPosArrPtr2, outPosArrSizePtr2);
+
+    std::cout << "[";
+    for(int i(0); i < *outPosArrSizePtr2; ++i) {
+        std::cout << outPos[i];
+        if (i != *outPosArrSizePtr2-1) {
+            std::cout << ",";
+        }
+    }
+    std::cout << "]" << std::endl;
 
     return 0;
 }
@@ -101,9 +132,38 @@ void getPosNums3 (int* arr, int arrSize, int*& outPosArr, int& outPosArrSize) {
         }
     }
 
+    int* posArr = new int[outPosArrSize];
+    int j(0);
 
+    for (int i(0); i < arrSize; ++i) {
+        if ((arr[i]) > 0) {
+            posArr[j] = arr[i];
+            ++j;
+        }
+    }
+    outPosArr = posArr; // i don't have to delete the array???
 }
 
-// void getPosNums4 (int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizePtr) {
+void getPosNums4 (int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizePtr) {
 
-// }
+    for (int i(0); i < arrSize; ++i) {
+        if ((arr[i]) > 0) {
+            *outPosArrSizePtr += 1;
+        }
+    }
+
+    int* posArr = new int[*outPosArrSizePtr];
+    int j(0);
+
+    for (int i(0); i < arrSize; ++i) {
+        if (arr[i] > 0) {
+            posArr[j] = arr[i];
+            ++j;
+        }
+    }
+
+    *outPosArrPtr = posArr;
+
+//i don't have to delete this as well?
+
+}
