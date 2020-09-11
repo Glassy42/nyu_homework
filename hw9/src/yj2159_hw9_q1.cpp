@@ -2,6 +2,8 @@
 #include <string>
 #include <cctype>
 
+int countWords(std::string str, const int length);
+
 int main(){
     using std::cout;
     using std::endl;
@@ -19,17 +21,10 @@ int main(){
         str[i] = tolower(str[i]);
     }
 
-    int wordCount(0);
-
-    for (int i(0); i <= length; ++i) {
-        if ((str[i] == ' ') || (i == length)){
-            wordCount++;
-        }
-    }
+    int wordCount = countWords(str, length);
 
     cout << wordCount << "\t words" << endl;
 
-    char arr[length];
     const int letters(26);
 
     int charCounters[letters];
@@ -53,4 +48,20 @@ int main(){
     }
 
     return 0;
+}
+
+int countWords(std::string str, const int length) {
+    int wordCount(0);
+    int currWordLen(0);
+    for (int i(0); i <= length; ++i) {
+        if ((str[i] == ' ') || (i == length) || (str[i] == ',') || (str[i] == '.')){
+            if(currWordLen > 0) {
+                wordCount++;
+                currWordLen = 0;
+            }
+        } else {
+            currWordLen++;
+        }
+    }
+    return wordCount;
 }

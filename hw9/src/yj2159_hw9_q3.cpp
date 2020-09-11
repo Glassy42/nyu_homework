@@ -61,24 +61,27 @@ int main(){
     }
     std::cout << "]" << std::endl;
 
+    delete[] outPosArr;
+
 //d)---------------------------------------------------------------------
 
     int outPosArrSize4(0);
-    int* outPosArrSizePtr2 = &outPosArrSize4;
-    int* outPos = new int[*outPosArrSizePtr2];
-    int** outPosArrPtr2 = &outPos;
+    int** outPosArrPtr2 = new int*;
 
-    getPosNums4(arr, arrSize, outPosArrPtr2, outPosArrSizePtr2);
+    getPosNums4(arr, arrSize, outPosArrPtr2, &outPosArrSize4);
 
     std::cout << "[";
-    for(int i(0); i < *outPosArrSizePtr2; ++i) {
-        std::cout << outPos[i];
-        if (i != *outPosArrSizePtr2-1) {
+    for(int i(0); i < outPosArrSize4; ++i) {
+        std::cout << (*outPosArrPtr2)[i];
+        if (i != outPosArrSize4-1) {
             std::cout << ",";
         }
     }
     std::cout << "]" << std::endl;
 
+    delete[] *outPosArrPtr2;
+    delete outPosArrPtr2;
+    
     return 0;
 }
 
@@ -141,7 +144,8 @@ void getPosNums3 (int* arr, int arrSize, int*& outPosArr, int& outPosArrSize) {
             ++j;
         }
     }
-    outPosArr = posArr; // i don't have to delete the array???
+    outPosArr = posArr; 
+
 }
 
 void getPosNums4 (int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizePtr) {
@@ -152,18 +156,13 @@ void getPosNums4 (int* arr, int arrSize, int** outPosArrPtr, int* outPosArrSizeP
         }
     }
 
-    int* posArr = new int[*outPosArrSizePtr];
+    *outPosArrPtr = new int[*outPosArrSizePtr];
     int j(0);
 
     for (int i(0); i < arrSize; ++i) {
         if (arr[i] > 0) {
-            posArr[j] = arr[i];
+            (*outPosArrPtr)[j] = arr[i];
             ++j;
         }
     }
-
-    *outPosArrPtr = posArr;
-
-//i don't have to delete this as well?
-
 }

@@ -3,7 +3,7 @@
 #include <cctype>
 
 using std::string;
-void anagrams(string& str);
+int* anagrams(string str);
 
 int main(){
     using std::cout;
@@ -17,36 +17,39 @@ int main(){
     getline(cin, str1);
     getline(cin, str2);
 
-    anagrams(str1);
-    anagrams(str2);
+    int* charCount1 = anagrams(str1);
+    int* charCount2 = anagrams(str2);
 
     const int letters(26);
-    int num(0);
+    bool notAnagrams(false);
     for (int i(0); i < letters; ++i) {
-        if (str1[i] == str2[i]) {
-            num++;
+        if (charCount1[i] != charCount2[i]) {
+            notAnagrams = true;
+            break;
         }
     }
-
-    if (num==26) {
-        cout << "Two strings are anagrams" << endl;
-    } else { 
+    if (notAnagrams) {
         cout << "Two strings are not anagrams" << endl;
+    } else { 
+        cout << "Two strings are anagrams" << endl;
     }
+    
 
+    delete[] charCount1;
+    delete[] charCount2;
+    
     return 0;
 }
 
-void anagrams(string& str) {
+int* anagrams(string str) {
     const int length(str.length());
     
     for (int i(0); i < length; ++i) {
         str[i] = tolower(str[i]);
     }
 
-    char arr[length];
     const int letters(26);
-    int charCounters[letters];
+    int* charCounters = new int[letters];
 
     for (int i(0); i < letters; ++i) {
         charCounters[i] = 0;
@@ -61,11 +64,5 @@ void anagrams(string& str) {
         }
     }
 
-    string sentence;
-
-    for (int i(0); i < letters; ++i) {
-        sentence = sentence + (char)(charCounters[i]);
-    }
-
-    str = sentence;
+    return charCounters;
 }
