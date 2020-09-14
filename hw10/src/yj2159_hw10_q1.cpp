@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
 
 std::string* createWordsArray(std::string sentence, int& outWordsArrSize);
 int main() {
