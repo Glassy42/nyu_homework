@@ -18,6 +18,8 @@ int main() {
         
     }
     std::cout << "]" << std::endl;
+
+    delete[] words;
     
     return 0;
 }
