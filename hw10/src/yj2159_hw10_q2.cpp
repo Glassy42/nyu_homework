@@ -3,11 +3,11 @@
 int* findMissing (int arr[], int n, int& resArrSize);
 
 int main() {
-    int arr[5] = {3, 1, 3, 6, 4};
-    int arrSize(5);
-    int resArrSize(0);
+    int arr[1] = {1}; 
+    int arrSize(1);
+    int resArrSize;
 
-    int* resArr = findMissing(arr, 6, resArrSize);
+    int* resArr = findMissing(arr, 1, resArrSize);
     
     std::cout << "[";
     for (int i(0); i < resArrSize; ++i) {
@@ -26,39 +26,30 @@ int main() {
 
 int* findMissing (int arr[], int n, int& resArrSize) {
 
-    int* allNum= new int[n+1];
+    bool* allNum= new bool[n+1];
+    resArrSize = n + 1;
 
     for (int i(0); i <= n; ++i) {
-        allNum[i] = i;
+        allNum[i] = false;
     }
 
     for (int i(0); i < n; ++i) {
-        if (arr[i] != 0) {
-            if (allNum[arr[i]] != 0) {
-                allNum[arr[i]] = 0;
-            }
-        } else {
-            allNum[arr[i]] = -1;
+        int currNumber(arr[i]);
+        if (allNum[currNumber] == false) {
+            allNum[currNumber] = true;
+            resArrSize--;
         }
     }
 
     int* resArr = new int[resArrSize];
     int j(0);
-
-    if (allNum[0] == 0) {
-        resArr[j] = 0;
-        j++;
-        resArrSize++;
-    }
-
-    for (int i(1); i <= n; ++i) {
-        if (allNum[i] != 0) {
-            resArr[j] = allNum[i];
+    for (int i(0); i <= n; ++i) {
+        if (allNum[i] == false) {
+            resArr[j] = i;
             j++;
-            resArrSize++;
         }
     }
-
+    
     delete[] allNum;
     
     return resArr;
