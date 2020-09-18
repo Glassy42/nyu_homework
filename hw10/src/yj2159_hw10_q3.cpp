@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 
+void resize(int*& arr, const int arrSize, int& arrPhysicalSize);
 void main1();
 void main2();
 
@@ -9,7 +10,8 @@ int main() {
     using std::endl;
     using std::cin;
 
-    main1();
+    // main1();
+
     main2();
 
     return 0;
@@ -24,11 +26,11 @@ void main1() {
     cout << "each in a separate line."<< endl;
     cout << "End your input by typing -1." << endl;
 
-    int* arr = new int[1];
     int arrSize(0); 
     int arrPhysicalSize(1); 
     int currNum;
-    
+    int* arr = new int[arrPhysicalSize];
+
     bool seenEndOfInput(false);
 
     while (seenEndOfInput == false) {
@@ -37,13 +39,7 @@ void main1() {
             seenEndOfInput = true;
         } else {
             if (arrSize == arrPhysicalSize) {
-                int* newArr = new int[2*arrPhysicalSize];
-                for (int i(0); i < arrSize; ++i) {
-                    newArr[i] = arr[i];
-                }
-                delete[] arr;
-                arr = newArr;
-                arrPhysicalSize *= 2;
+                resize(arr, arrSize, arrPhysicalSize);
             }
             arr[arrSize] = currNum;
             arrSize++;
@@ -54,13 +50,42 @@ void main1() {
     cout << "Please enter a number you want to search. " << endl;
     cin >> searchNum;
     
-    cout << searchNum << " shows in lines ";
+    int searchArrSize(0);
+    int searchArrPhysicalSize(1);
+    int* searchArr = new int[searchArrPhysicalSize];
+
     for (int i(0); i < arrSize; ++i) {
-        if (searchNum == arr[i]) {
-            cout << i + 1 << ",";
+        if (searchNum == arr[i]){
+            if (searchArrSize == searchArrPhysicalSize) {
+                resize(searchArr, searchArrSize, searchArrPhysicalSize);
+            }
+            searchArr[searchArrSize] = i + 1;
+            searchArrSize++;
         }
     }
-    
+
+    cout << searchNum << " shows in lines ";
+
+    for (int i(0); i < searchArrSize; ++i) {
+        if (i != searchArrSize-1) {
+            cout << searchArr[i] << ",";
+        } else {
+            cout << searchArr[i] << "." << endl;
+        }
+    }
+
+    delete[] searchArr;
+    delete[] arr;
+}
+
+void resize(int*& arr, const int arrSize, int& arrPhysicalSize) {
+    int* newArr = new int[2*arrPhysicalSize];
+    for (int i(0); i < arrSize; ++i) {
+        newArr[i] = arr[i];
+    }
+    delete[] arr;
+    arr = newArr;
+    arrPhysicalSize *= 2;
 }
 
 void main2() {
@@ -90,10 +115,19 @@ void main2() {
     cout << "Please enter a number you want to search. " << endl;
     cin >> searchNum;
 
-    cout << searchNum << " shows in lines ";
+    vector<int> searchVec;
     for (int i(0); i < linesVec.size(); ++i) {
         if (searchNum == linesVec[i]) {
-            cout << i + 1 << ",";
+            searchVec.push_back(i + 1);
         }
     }
+    cout << searchNum << " shows in lines ";
+    for (int i(0); i < searchVec.size(); ++i) {
+        if (i != searchVec.size()-1) {
+            cout << searchVec[i] << ",";
+        } else {
+            cout << searchVec[i] << "." << endl;
+        }
+    }
+
 }
